@@ -46,7 +46,7 @@ class GallerySaver {
     if (path == null || path.isEmpty) {
       throw ArgumentError(pleaseProvidePath);
     }
-    if (!isImage(path) || ignoreImageCheck) {
+    if (!isImage(path) && !ignoreImageCheck) {
       throw ArgumentError(fileIsNotImage);
     }
     if (!isLocalFilePath(path)) {
