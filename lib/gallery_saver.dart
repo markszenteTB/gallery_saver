@@ -41,12 +41,12 @@ class GallerySaver {
   }
 
   ///saves image from provided temp path and optional album name in gallery
-  static Future<bool> saveImage(String path, {String albumName}) async {
+  static Future<bool> saveImage(String path, {String albumName, bool ignoreImageCheck = false}) async {
     File tempFile;
     if (path == null || path.isEmpty) {
       throw ArgumentError(pleaseProvidePath);
     }
-    if (!isImage(path)) {
+    if (!isImage(path) || ignoreImageCheck) {
       throw ArgumentError(fileIsNotImage);
     }
     if (!isLocalFilePath(path)) {
